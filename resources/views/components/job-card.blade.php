@@ -1,4 +1,4 @@
-<x-card>
+<x-card class="mb-4">
     <div class="mb-4 flex justify-between">
         <h2 class="text-lg font-medium">
             {{ $job->title }}
