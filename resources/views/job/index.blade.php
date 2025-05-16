@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <button class="ring-1 ring-slate-300 rounded-md px-2 py-1 font-semibold hover:bg-slate-100">Filter</button>
+            <x-button class="w-full">Filter</x-button>
         </form>
     </x-card>
 
