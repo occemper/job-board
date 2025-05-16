@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::table('jobs', function (Blueprint $table) {
+        Schema::table('offered_jobs', function (Blueprint $table) {
             $table->foreignIdFor(Employer::class)->constrained();
         });
     }
@@ -33,8 +33,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('jobs', function (Blueprint $table) {
-            $table->dropForeignIdFor(Employer::class);
+        Schema::table('offered_jobs', function (Blueprint $table) {
+            $table->dropForeign(['employer_id']);
         });
         Schema::dropIfExists('employers');
     }
