@@ -12,13 +12,9 @@ class JobController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = request()->only(
-            'search',
-            'min_salary',
-            'max_salary',
-            'experience',
-            'category'
-        );
+        $filters = request()->only('search',
+         'min_salary',
+          'max_salary', 'experience', 'category');
 
         return view('job/index', ['jobs' => Job::filter($filters)->get()]);
     }
@@ -44,7 +40,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        return view('job.show', [compact('job')]);
+        return view('job.show', compact('job'));
     }
 
     /**
