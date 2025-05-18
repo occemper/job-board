@@ -9,7 +9,7 @@
 
             <div class="mb-8">
                 <label for="email" class="mb-2 block text-sm font-medium text-slate-900">E-mail</label>
-                <x-text-input name="password" />
+                <x-text-input name="email" />
             </div>
 
             <div class="mb-8">
