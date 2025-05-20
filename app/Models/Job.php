@@ -17,6 +17,15 @@ class Job extends Model
 
     protected $table = 'offered_jobs';
 
+    protected $fillable = [
+        'title',
+        'location',
+        'salary',
+        'description',
+        'experience',
+        'category',
+    ];
+
     public static array $experience = ['entry', 'intermediate', 'senior'];
     public static array $category = ['IT', 'Finance', 'Sales', 'Marketing'];
 
@@ -39,7 +48,7 @@ class Job extends Model
             )->exists();
     }
 
-    public function scopeFilter(Builder| QueryBuilder $query, array $filters)
+    public function scopeFilter(Builder|QueryBuilder $query, array $filters)
     {
         return $query->when($filters['search'] ?? null, function ($query, $search) {
             $query->where(function ($query) use ($search) {

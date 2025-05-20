@@ -17,13 +17,13 @@
                 </div>
 
                 <div class="col-span-2">
-                    <x-label for="title" :required="true">Salary</x-label>
+                    <x-label for="salary" :required="true">Salary</x-label>
                     <x-text-input name="salary" type="number" />
                 </div>
 
                 <div class="col-span-2">
                     <x-label for="description" :required="true">Description</x-label>
-                    <x-text-input name="salary" type="texarea" />
+                    <x-text-input name="description" type="texarea" />
                 </div>
 
                 <div>
