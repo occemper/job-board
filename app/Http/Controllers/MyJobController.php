@@ -12,7 +12,15 @@ class MyJobController extends Controller
     {
         //Gate::authorize('viewAnyEmployer', Job::class);
 
-        return view('my_job.index');
+        return view(
+            'my_job.index',
+            [
+                'jobs' => auth()->user()->employer
+                    ->jobs()
+                    ->with(['employer', 'jobApplications', 'jobApplications.user'])
+                    ->get()
+            ]
+        );
     }
 
     public function create()

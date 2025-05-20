@@ -23,7 +23,7 @@ class JobController extends Controller
             'category'
         );
 
-        return view('job/index', ['jobs' => Job::filter($filters)->latest()->get()]);
+        return view('job/index', ['jobs' => Job::filter($filters)->latest()->paginate()]);
     }
 
     /**

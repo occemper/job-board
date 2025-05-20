@@ -44,4 +44,8 @@
             </div>
         </x-job-card>
     @endforeach
+
+    <div class="mb-8 mt-4">
+        {{ $jobs->links() }}
+    </div>
 </x-layout>

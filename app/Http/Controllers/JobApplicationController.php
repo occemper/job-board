@@ -26,7 +26,7 @@ class JobApplicationController extends Controller
 
         $validatedData = $request->validate([
             'expected_salary' => 'required|min:1|max:2000000',
-            'cv' => 'required|file|mimes:pdf|max4096'
+            'cv' => 'required|file|mimes:pdf|max:4096'
         ]);
 
         $file = $request->file('cv');
