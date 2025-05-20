@@ -16,14 +16,14 @@ class MyJobController extends Controller
 
     public function create()
     {
-        Gate::authorize('create', Job::class);
+        //Gate::authorize('create', Job::class);
 
-
+        return view('my_job.create');
     }
 
-    public function store(JobRequest $request)
+    public function store(Request $request)
     {
-        Gate::authorize('create', Job::class);
+        //Gate::authorize('create', Job::class);
         // ...
     }
 
@@ -33,7 +33,7 @@ class MyJobController extends Controller
         // ...
     }
 
-    public function update(JobRequest $request, Job $myJob)
+    public function update(Request $request, Job $myJob)
     {
         Gate::authorize('update', $myJob);
         // ...
