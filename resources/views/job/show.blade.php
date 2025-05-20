@@ -9,9 +9,13 @@
             <x-link-button :href="route('job.application.create', $job)">
                 Apply
             </x-link-button>
-        @else
+        @elseif(auth()->user())
             <div class="text-center text-sm font-medium text-slate-500">
                 You already applied to this job!
+            </div>
+        @else
+            <div class="text-center text-sm font-medium text-slate-500">
+                Unauthenticated!
             </div>
         @endcan
     </x-job-card>

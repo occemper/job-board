@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Models\Job;
@@ -30,39 +31,32 @@ class MyJobController extends Controller
         return view('my_job.create');
     }
 
-    public function store(Request $request)
+    public function store(JobRequest $request)
     {
         //Gate::authorize('create', Job::class);
 
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'salary' => 'required|numeric|min:2000',
-            'description' => 'required|string',
-            'experience' => 'required|in:' . implode(',', Job::$experience),
-            'category' => 'required|in:' . implode(',', Job::$category)
-        ]);
-
-        auth()->user()->employer->jobs()->create($validatedData);
+        auth()->user()->employer->jobs()->create($request->validated());
 
         return redirect()->route('my-jobs.index')->with('success', 'Job was created!');
     }
 
     public function edit(Job $myJob)
     {
-        Gate::authorize('update', $myJob);
-        // ...
+        // Gate::authorize('update', $myJob);
+        return view('my_job.edit', ['job' => $myJob]);
     }
 
-    public function update(Request $request, Job $myJob)
+    public function update(JobRequest $request, Job $myJob)
     {
-        Gate::authorize('update', $myJob);
-        // ...
+        //Gate::authorize('update', $myJob);
+
+        $myJob->update($request->validated());
+        return redirect()->route('my-jobs.index')->with('success', 'Job was edited succesfully!');
     }
 
     public function destroy(Job $myJob)
     {
-        Gate::authorize('delete', $myJob);
+        //Gate::authorize('delete', $myJob);
         $myJob->delete();
 
         return redirect()->route('my-jobs.index')
