@@ -11,7 +11,7 @@ class MyJobController extends Controller
 {
     public function index()
     {
-        //Gate::authorize('viewAnyEmployer', Job::class);
+        Gate::authorize('viewAnyEmployer', Job::class);
 
         return view(
             'my_job.index',
@@ -26,14 +26,14 @@ class MyJobController extends Controller
 
     public function create()
     {
-        //Gate::authorize('create', Job::class);
+        Gate::authorize('create', Job::class);
 
         return view('my_job.create');
     }
 
     public function store(JobRequest $request)
     {
-        //Gate::authorize('create', Job::class);
+        Gate::authorize('create', Job::class);
 
         auth()->user()->employer->jobs()->create($request->validated());
 
@@ -42,13 +42,13 @@ class MyJobController extends Controller
 
     public function edit(Job $myJob)
     {
-        // Gate::authorize('update', $myJob);
+        Gate::authorize('update', $myJob);
         return view('my_job.edit', ['job' => $myJob]);
     }
 
     public function update(JobRequest $request, Job $myJob)
     {
-        //Gate::authorize('update', $myJob);
+        Gate::authorize('update', $myJob);
 
         $myJob->update($request->validated());
         return redirect()->route('my-jobs.index')->with('success', 'Job was edited succesfully!');
@@ -56,7 +56,7 @@ class MyJobController extends Controller
 
     public function destroy(Job $myJob)
     {
-        //Gate::authorize('delete', $myJob);
+        Gate::authorize('delete', $myJob);
         $myJob->delete();
 
         return redirect()->route('my-jobs.index')
