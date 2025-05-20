@@ -58,7 +58,7 @@ class JobPolicy
      */
     public function delete(User $user, Job $job): bool
     {
-        return $user->id !== $job->employer->user_id;
+        return $user->id === $job->employer->user_id;
     }
 
     /**
@@ -66,7 +66,7 @@ class JobPolicy
      */
     public function restore(User $user, Job $job): bool
     {
-        return $user->id !== $job->employer->user_id;
+        return $user->id === $job->employer->user_id;
     }
 
     /**
@@ -74,7 +74,7 @@ class JobPolicy
      */
     public function forceDelete(User $user, Job $job): bool
     {
-        return $user->id !== $job->employer->user_id;
+        return $user->id === $job->employer->user_id;
     }
 
     public function apply(User $user, Job $job): bool
